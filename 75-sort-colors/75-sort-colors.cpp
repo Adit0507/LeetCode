@@ -4,19 +4,23 @@ public:
         int n = nums.size();
         
         int l = 0;
-        int h = n -1;
-        int i = 0;
+        int m = 0;
+        int h = n - 1;
         
-        while(i <= h) {
-            if(nums[i] == 1)
-                i++;
-            else if (nums[i] == 0){
-                nums[i++] = nums[l];
-                nums[l++] = 0;
-            }
-            else {
-                nums[i] = nums[h];
-                nums[h--] = 2;
+        while(m <= h){
+            switch(nums[m]){
+                    
+                case 0:
+                    swap(nums[l++], nums[m++]);
+                    break;
+                    
+                case 1:
+                    m++;
+                    break;
+                    
+                case 2:
+                    swap(nums[m],nums[h--]);
+                    break;
             }
         }
     }

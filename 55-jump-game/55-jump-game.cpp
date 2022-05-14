@@ -9,7 +9,7 @@ public:
             reach = max(reach, i + nums[i]);
         }
         
-        return reach >= n - 1;     
+        return reach >= n -1 ;     
     }
 };
     

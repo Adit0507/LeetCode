@@ -15,7 +15,8 @@ public:
         ListNode *curr = head;
         
         while (curr != NULL){
-            ans = (ans << 1) + curr->val;
+            ans *= 2;   // ans << 1 (Using bitwise operator)
+            ans += (curr->val);
             curr = curr->next;
         }
         

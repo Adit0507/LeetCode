@@ -14,23 +14,17 @@ public:
         if(head == NULL)
             return NULL;
         
-        ListNode* dummy = new ListNode(-1);
-        dummy->next = head; //head se pahle
-        
-        ListNode* tail = dummy;
-        while(tail != NULL && tail->next != NULL)
-        {
-            if(tail->next->val == val)
-            {
-                ListNode* temp =tail->next;
-                tail->next = temp->next;
-                delete temp;
-            }
-            else {
-                tail = tail->next;
-            }
+       head->next = removeElements(head->next, val);
+       
+        if(head->val == val){
+            ListNode* ans = head->next;
+            delete head;
+            return ans;
         }
-        return dummy->next;
+        else {
+            return head;
+        }
+        
     }
 };
 

@@ -37,11 +37,8 @@ public:
         
         // Reversing the 2nd half and splitting the list in two
         ListNode* second = reverse(slow -> next); // slow->next is Head of the 2nd Linked List
-        
         slow->next = NULL; // To break the connection to make 2 LL
-        
         ListNode* first = head; // First list
-        
         // Merging the 2 lists
         while(second){
             ListNode* temp1 = first->next;
@@ -49,6 +46,7 @@ public:
             
             first -> next = second;
             second->next = temp1;
+            
             first = temp1;
             second = temp2;
         }

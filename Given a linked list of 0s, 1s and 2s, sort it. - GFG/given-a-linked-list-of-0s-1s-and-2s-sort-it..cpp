@@ -33,49 +33,63 @@ class Solution
 {
     public:
     //Function to sort a linked list of 0s, 1s and 2s.
+    void insertAtTail(Node* &tail, Node* curr) {
+        tail->next = curr;
+        tail = curr;
+    }
     Node* segregate(Node *head) {
+        Node* zeroHead = new Node(-1);
+        Node* zeroTail = zeroHead;
         
-        // Add code here
-        int zeroCount = 0;
-        int oneCount = 0;
-        int twoCount = 0;
+        Node* oneHead = new Node(-1);
+        Node* oneTail = oneHead;
         
-        Node* temp = head;
-        while(temp != NULL){
-            if(temp->data == 0)
-                zeroCount++;
+        Node* twoHead = new Node(-1);
+        Node* twoTail = twoHead;
+        
+        Node* curr = head;
+        while (curr != NULL){
             
-            else if(temp->data == 1)
-                oneCount ++;
-                
-            else if(temp->data == 2)
-                twoCount ++;
+            int value = curr->data;
             
-            temp = temp->next;
+            if(value == 0){
+                insertAtTail(zeroTail, curr);       
+            }
+            else if (value == 1){
+                insertAtTail(oneTail, curr);
+            }
+            
+            else if (value == 2){
+                insertAtTail( twoTail, curr);
+            }
+            curr = curr->next;
         }
         
-        temp = head;
-        
-        while(temp != NULL){
-            if (zeroCount != 0){
-                temp->data = 0;
-                zeroCount --;   //Use karliya hai
-            }
-            else if(oneCount != 0){
-                temp->data = 1;
-                oneCount --;
-            }
-            else if(twoCount != 0){
-                temp->data = 2;
-                twoCount--;
-            }
-            temp = temp->next;
+        if(oneHead ->next != NULL){
+        zeroTail -> next = oneHead -> next;
         }
+        else {
+            zeroTail ->next = twoHead ->next;
+        }
+        
+        oneTail -> next = twoHead ->next;
+        twoTail -> next = NULL;
+        
+        // setting up the head
+        head = zeroHead ->next;
+        
+        delete zeroHead;
+        delete oneHead;
+        delete twoHead;
         
         return head;
-        
     }
 };
+
+
+
+
+
 
 
 // { Driver Code Starts.

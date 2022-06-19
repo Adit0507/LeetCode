@@ -9,7 +9,7 @@
  * };
  */
 class Solution {
-public:
+public: 
     ListNode* reverse(ListNode* head){
         ListNode* prev= NULL;
         ListNode* curr = head;
@@ -26,6 +26,7 @@ public:
     
     void reorderList(ListNode* head) {
         
+        // Finding the middle of the LL using slow and fast pointers
         ListNode* slow = head;
         ListNode* fast = head;
         
@@ -34,7 +35,7 @@ public:
             fast = fast->next->next;
         }
         
-        
+        // Reversing the 2nd half and splitting the list in two
         ListNode* second = reverse(slow -> next);
         slow->next = NULL;
         ListNode* first = head;

@@ -38,13 +38,14 @@ class Solution
         tail = curr;
     }
     Node* segregate(Node *head) {
-        Node* zeroHead = new Node(-1);
+        // Creating dummy nodes
+        Node* zeroHead = new Node(0);
         Node* zeroTail = zeroHead;
         
-        Node* oneHead = new Node(-1);
+        Node* oneHead = new Node(0);
         Node* oneTail = oneHead;
         
-        Node* twoHead = new Node(-1);
+        Node* twoHead = new Node(0);
         Node* twoTail = twoHead;
         
         Node* curr = head;

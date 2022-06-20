@@ -1,54 +1,48 @@
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
-        int x = nums.size() - k;    //x is the index of first element of vector nums after k rotations 
-        int x1 = x;    // stores the initial value of x
-
-        if(k>nums.size())    // condition for k greater than vector nums size
+        int r = nums.size() - k;
+        int x1 = r;
+        
+        if (k > nums.size())
         {
-            x = nums.size() - k%nums.size();
-            x1=x;
+            r = nums.size() - k%nums.size();
+            x1 = r;
         }
-
-        vector<int> rotated_vector;   // resulting vector after k rotations
-
-        if(nums.size()==1||k==0||k==nums.size())  // exception for vector size equal to 1
+        
+        vector <int> V;
+        
+        if (nums.size() == 1 || k == 0 || k == nums.size())
         {
-            x = 0;
-            rotated_vector.push_back(nums[x]);   //pushing value of nums at x
+            r = 0;
+            V.push_back (nums[r]);
         }
-        else   
-        {
-            rotated_vector.push_back(nums[x]);   //pushing value of nums at x
-
-            if(x<(nums.size()-1))  //increment of x 
-            {
-               x++;
+        else {
+            V.push_back(nums[r]);
+            
+            if (r < nums.size() - 1){
+                    r ++;
             }
-            else
-            {
-                x=0;              //if x points to last element of array
+            else {
+                r = 0;
             }
-
-            while(x!=x1&&x<nums.size())  //pushing all the remaining elements in the vector
+            
+            while (r != x1 && r < nums.size())
             {
-                 rotated_vector.push_back(nums[x]);
-
-                 if(x<(nums.size()-1))
-                 {
-                   x++;
-                 }
-                 else
-                 {
-                     x=0;
-                 }
-
+                V.push_back(nums[r]);
+                
+                if (r < (nums.size() -1)){
+                    r++;
+                }
+                else {
+                    r = 0;
+                }
             }
-
-            if(k!=0&&k!=nums.size()) //swaping vectors if any changes occured in the vector after k rotations.
+            
+            if(k != 0 && k!= nums.size())
             {
-                nums.swap(rotated_vector);
+                nums.swap(V);
             }
-       }
+        }
     }
 };

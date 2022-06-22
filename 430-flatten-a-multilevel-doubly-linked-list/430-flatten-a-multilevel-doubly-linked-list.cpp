@@ -14,7 +14,7 @@ public:
     Node* flatten(Node* head) {
         if(head == nullptr) return nullptr;
         
-        Node* cur;
+        Node* curr;
         stack<Node*> stk;
         
         stk.push(head);
@@ -22,45 +22,43 @@ public:
         Node* newhead = head;
         
         while(!stk.empty()){
-            //cur 
-            cur = stk.top(); stk.pop();
+            curr = stk.top(); stk.pop();
             
             //go to the end of list or the node having child
-            while(cur->next != nullptr && cur->child == nullptr){
-                cur = cur->next;
+            while(curr->next != nullptr && curr->child == nullptr){
+                curr = curr->next;
             }
             
-            if(cur->next == nullptr && cur->child != nullptr){
+            if(curr->next == nullptr && curr->child != nullptr){
                 //end node and has child
-                cur->next = cur->child;
-                cur->child->prev = cur;
-                cur->child = nullptr;
+                curr->next = curr->child;
+                curr->child->prev = curr;
+                curr->child = nullptr;
+                
                 //need to further visit cur->next
-                stk.push(cur->next);
-            }else if(cur->next == nullptr){
+                stk.push(curr->next);
+            }else if(curr->next == nullptr){
+               
                 //go to the end of current level
                 if(!stk.empty()){
                     //stk.top() is the node to be concatenated
-                    cur->next = stk.top();
-                    stk.top()->prev = cur;
+                    curr ->next = stk.top();
+                    stk.top()->prev = curr;
                 }
             }else{
                 //go to the node having child
                 
                 //we will later visit its child and then its next
-                stk.push(cur->next);
-                stk.push(cur->child);
+                stk.push(curr->next);
+                stk.push(curr->child);
                 
                 //rewind
-                cur->next = cur->child;
-                cur->child->prev = cur;
-                cur->child = nullptr;
+                curr->next = curr->child;
+                curr->child->prev = curr;
+                curr->child = nullptr;
             }
         }
-        
         return newhead;
-        
-        
     }
 };
 

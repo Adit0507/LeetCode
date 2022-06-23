@@ -8,6 +8,8 @@ public:
         
         for (int i=0; i < 2*n; i++){
             while (!s.empty() && nums[i%n] > nums[s.top()]){
+                // Using i%n because we need to keep i in a range
+                // Will get an error if we dont do tht
                 ans[s.top()] = nums[i % n];
                 s.pop();
             }

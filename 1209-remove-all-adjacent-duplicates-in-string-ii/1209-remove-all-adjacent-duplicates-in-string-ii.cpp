@@ -3,7 +3,7 @@ public:
     string removeDuplicates(string s, int k) {
         if ((s.size()) < k) return s;
         
-        stack <pair<int,int>> st;
+        stack <pair<char,int>> st;
         for (int i = 0; i < s.size(); i++){
             if (st.empty() || st.top().first != s[i]){
                 st.push({s[i], 1});
@@ -31,10 +31,3 @@ public:
         return ans;
     }
 };
-
-
-
-
-
-
-

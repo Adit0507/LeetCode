@@ -230,7 +230,8 @@ int height(struct Node* node)
     
     if(lDepth > rDepth)
         return (lDepth + 1);
-    else return (rDepth + 1);
+    else
+        return (rDepth + 1);
 }
 
 

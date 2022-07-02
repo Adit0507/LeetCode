@@ -18,7 +18,7 @@ public:
         
         while(first && first->next){
             ListNode* second = first->next; // 1->2
-            ListNode* future = first->next->next;    // first->next->next
+            ListNode* future = second->next;    // first->next->next
             second->next = first;
             prev->next = second;
             first->next = future;

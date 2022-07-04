@@ -15,15 +15,18 @@ public:
         queue<pair<TreeNode*, long long>> q;
         q.push({root, 0});
         int ans = 1;
+        
         while(!q.empty()){
             int size = q.size();
             int start = q.front().second;
             int end = q.back().second;
-            ans = max(ans, end-start+1);
+            
+            ans = max(ans, end - start + 1);
             while(size--){
                 auto curr = q.front();
                 q.pop();
                 long long index = curr.second - start;
+                
                 if(curr.first->left){
                     q.push({curr.first->left, 2*index + 1});
                 }
@@ -32,7 +35,7 @@ public:
                 }
             }
         }
-        return ans;   
+        return ans;
     }
 };
 

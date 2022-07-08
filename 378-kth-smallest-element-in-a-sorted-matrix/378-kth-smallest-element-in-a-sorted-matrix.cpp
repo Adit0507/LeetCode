@@ -11,11 +11,10 @@ public:
             for(int i=0; i < n; i++){
                 count += upper_bound(matrix[i].begin(), matrix[i].end(), mid) - matrix[i].begin();
             }
-            
             if(count < k){
                 l = mid + 1;
             } else{
-                r = mid -1;
+                r = mid-1;
             }
         }
         return l;

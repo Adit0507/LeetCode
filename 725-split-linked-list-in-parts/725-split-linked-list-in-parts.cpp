@@ -19,14 +19,11 @@ public:
         }
         
         int width = n/k, rem = n%k;
-        
         vector<ListNode* >ans(k, NULL);
-        
         curr = head;
         for(int i =0; i < k; i++){
             ListNode* prev = curr;
             ListNode* head= curr;
-            
             for(int j=0; j < width + (i < rem ? 1:0) -1; j++){
                 if(prev)
                     prev = prev->next;

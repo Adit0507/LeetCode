@@ -14,14 +14,19 @@ public:
         if(!head || !head->next || k==0) return head;
         
         ListNode* curr = head;
+        
+        // Length
         int len =1;
         while(curr->next && len++)
             curr = curr->next;
+        
+        // Selected node
         curr->next = head;
-        k = k%len;
+        k = k % len;    // Doing this to keep k in limit
         k = len - k;
         while(k--) curr = curr->next;
         
+        // make the node head and break the connection
         head = curr->next;
         curr->next = NULL;
         

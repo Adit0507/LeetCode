@@ -11,16 +11,21 @@
  */
 class Solution {
 public:
+    int sum = 0;
+    void sumOfLeaf(TreeNode* root, bool isLeft){
+        if(!root)
+            return;
+        if(!root->left && !root->right){
+            if(isLeft)
+                sum += root->val;
+            return;
+        }
+        sumOfLeaf(root->left, true);
+        sumOfLeaf(root->right, false);
+    }
+    
     int sumOfLeftLeaves(TreeNode* root) {
-        if(root == NULL) return 0;
-        int sum = 0;
-        
-        if(root->left && !root->left->left && !root->left->right)
-            sum += root->left->val;
-        
-        if(root->left) sum += sumOfLeftLeaves(root->left);
-        
-        if(root->right) sum += sumOfLeftLeaves(root->right);
+        sumOfLeaf(root, false);
         return sum;
     }
 };

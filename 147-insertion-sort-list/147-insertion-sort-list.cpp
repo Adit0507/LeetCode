@@ -17,6 +17,7 @@ public:
         
         while(curr){
             if(curr->next && (curr->next->val < curr->val)){
+                // Insertion
                 while(prev->next && (prev->next->val < curr->next->val))
                     prev = prev->next;
                 ListNode* temp = prev->next;

@@ -11,25 +11,18 @@
  */
 class Solution {
 public:
-    int ans;
-    void sum(TreeNode* node, bool isLeft){
-    
-        if(node->left == NULL && node->right == NULL && isLeft){
-            ans+= node->val;
-        }    
-        if(node->left){
-            sum(node->left, true);
-        }
-        if(node->right){
-            sum(node->right, false);
-        }
-    }
-    
     int sumOfLeftLeaves(TreeNode* root) {
         if(root == NULL) return 0;
-        ans = 0;      
-        sum(root, false);
+        int sum = 0;
         
-        return ans;
+        if(root->left && !root->left->left && !root->left->right)
+            sum += root->left->val;
+        
+        if(root->left) 
+            sum += sumOfLeftLeaves(root->left);
+        
+        if(root->right)
+            sum += sumOfLeftLeaves(root->right);
+        return sum;
     }
 };

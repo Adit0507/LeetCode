@@ -18,11 +18,9 @@ public:
         if(root->left && !root->left->left && !root->left->right)
             sum += root->left->val;
         
-        if(root->left) 
-            sum += sumOfLeftLeaves(root->left);
+        if(root->left) sum += sumOfLeftLeaves(root->left);
         
-        if(root->right)
-            sum += sumOfLeftLeaves(root->right);
+        if(root->right) sum += sumOfLeftLeaves(root->right);
         return sum;
     }
 };

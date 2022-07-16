@@ -8,8 +8,7 @@ public:
             return dp[R][C][N];
         int mod = 1e9 + 7;
 
-        return dp[R][C][N]=((Paths(m,n,N-1,R+1,C,dp)+Paths(m,n,N-1,R-1,C,dp))%mod+(Paths(m,n,N-1,R,C+1,dp)+Paths(m,n,N-1,R,C-1,dp))%mod)%mod;
-
+        return dp[R][C][N]= ((Paths(m, n, N-1, R+1, C, dp) + Paths(m, n, N-1, R-1, C, dp))%mod + (Paths(m, n, N-1, R, C +1, dp) + Paths(m,n, N-1, R, C-1, dp))%mod)%mod;
     }
     
     int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {

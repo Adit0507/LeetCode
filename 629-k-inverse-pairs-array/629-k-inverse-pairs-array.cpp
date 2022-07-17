@@ -1,6 +1,5 @@
 class Solution {
 public:
-    int dp[1001][1001] = {};
     int kInversePairs(int n, int k) {
         int dp[1001][1001] = {1};
         for(int N =1; N <= n; N++)

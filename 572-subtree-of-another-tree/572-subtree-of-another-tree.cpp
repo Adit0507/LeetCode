@@ -18,7 +18,7 @@ public:
             bool a = match(root->left,subRoot->left);
             bool b = match(root->right, subRoot->right);
             
-            if((root->val == subRoot->val) && a && b){
+            if((root->val == subRoot->val) && a==true && b==true){
                 return true;
             }else
                 return false;
@@ -29,21 +29,21 @@ public:
             return false;
     }
     
-    void inorder(TreeNode* root, TreeNode* subRoot){
+    void order(TreeNode* root, TreeNode* subRoot){
         if(root != NULL){
-            inorder(root->left, subRoot);
+            order(root->left, subRoot);
             
             bool x = match(root, subRoot);
             if(x){
                 ans = x;
             }
-            inorder(root->right, subRoot);
+            order(root->right, subRoot);
         }
     }
     
     
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-        inorder(root, subRoot);
+        order(root, subRoot);
         return ans;
     }
 };

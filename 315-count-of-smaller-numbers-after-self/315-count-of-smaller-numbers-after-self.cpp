@@ -24,7 +24,6 @@ public:
             v[i] = temp[i - l];
         }
     }   
-    
     void mergeSort(vector<int> &count, vector<pair<int, int>>&v, int l, int r){
         if(l < r){
             int mid = l + (r - l)/2;
@@ -50,20 +49,3 @@ public:
         return count;
     }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

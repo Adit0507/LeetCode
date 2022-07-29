@@ -17,8 +17,7 @@ public:
             return;
         }
         if(root->left) path(res, root->left, t + "->"+ to_string(root->left->val));
-        if(root->right)
-            path(res, root->right, t+ "->" + to_string(root->right->val));
+        if(root->right) path(res, root->right, t+ "->" + to_string(root->right->val));
     }
     vector<string> binaryTreePaths(TreeNode* root) {
         vector<string> ans;

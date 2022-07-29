@@ -8,6 +8,7 @@ public:
             if(len !=word.size())
                 continue;
             unordered_set<char> uniqueChars_word, uniqueChars_pattern;
+            // comparing unique chars
             for(auto w:word)
                 uniqueChars_word.insert(w);
             
@@ -16,10 +17,12 @@ public:
             if(uniqueChars_word.size() != uniqueChars_pattern.size())
                 continue;
             
+            //map chars
             unordered_map<char, char> map;
             unordered_set<char> used_as_value;
             int i;
             for(i =0; i < len; i++){
+                
                 if(map.find(word[i]) != map.end()){
                     if(pattern[i] !=map[word[i]])
                         break;
@@ -36,20 +39,3 @@ public:
         return ans;
     }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

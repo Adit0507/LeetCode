@@ -1,19 +1,26 @@
 class MyCalendar {
 public:
-    map<int, int> books;
+    vector<pair<int, int>> a;
+    int n;
     MyCalendar() {
-        
+        n = a.size();
     }
     
     bool book(int start, int end) {
-        auto next = books.lower_bound(start);
-        if(next != books.end() && next->first < end)
-            return false;
-        if(next != books.begin() && start < (--next) ->second)
-            return false;
+        bool ans = true;
         
-        books[start] = end;
-        return true;
+        for(int i = 0; i < n; i++){
+            if(a[i].first < end && start < a[i].second){
+                ans = false;
+                break;
+            }
+        }
+        
+        if(ans){
+            a.push_back({start, end});
+            n++;
+        }
+        return ans;
     }
 };
 

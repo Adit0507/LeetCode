@@ -7,6 +7,7 @@ public:
            }
             
             for(int i=ind; i< arr.size(); i++){
+                // if the value is duplicate
                 if(i > ind && arr[i] == arr[i -1])
                     continue;
                 if(arr[i] > target)

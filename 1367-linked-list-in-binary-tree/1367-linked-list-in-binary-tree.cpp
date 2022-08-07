@@ -22,7 +22,7 @@
 class Solution {
 public:
     bool findPath(ListNode* head, TreeNode* root){
-        if(!head)
+        if(head==NULL)
             return true;
         if(!root)
             return false;

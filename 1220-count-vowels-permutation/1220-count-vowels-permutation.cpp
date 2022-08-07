@@ -3,7 +3,7 @@ public:
     int countVowelPermutation(int n) {
         long long a=1, b=1, c=1, d=1,e =1;
         long sum = 0;
-        int mod=1000000007;
+        int mod=1e9 +7;
         
         for(int i = 0; i < n; i++){
             sum = (a +b+c+d+e)%mod;

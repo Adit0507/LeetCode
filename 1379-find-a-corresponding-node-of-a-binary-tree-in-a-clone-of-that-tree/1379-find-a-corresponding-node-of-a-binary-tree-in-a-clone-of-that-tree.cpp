@@ -16,7 +16,6 @@ public:
             return NULL;
         if(original ->val == target->val)
             ans = cloned;
-        
         getTargetCopy(original->left, cloned->left, target);
         getTargetCopy(original ->right, cloned ->right, target);
         return ans;

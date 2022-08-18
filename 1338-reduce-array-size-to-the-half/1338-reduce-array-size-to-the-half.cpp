@@ -2,6 +2,7 @@ class Solution {
 public:
     int minSetSize(vector<int>& arr) {
         // Bucket sort
+        // Using arrays to store the frequncy
         int n= arr.size();
         int freq[100001] = {0};
         

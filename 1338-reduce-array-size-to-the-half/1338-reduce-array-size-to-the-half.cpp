@@ -1,32 +1,27 @@
 class Solution {
 public:
     int minSetSize(vector<int>& arr) {
-        // Store freq of all elements
-        // Copy all frequencies into array
-        // Sort in descending order
-        // Delete until array is half
-        unordered_map <int, int> map;
-        int n = arr.size();
+        // Bucket sort
+        int n= arr.size();
+        int freq[100001] = {0};
         
         for(auto a: arr){
-            map[a]++;
-        }
-        vector <int> freq;
-        // store in array from map
-        for(auto m: map){
-            freq.push_back(m.second);
+            freq[a]++;
         }
         
-        //sorting in descedning order
-        sort(freq.begin(), freq.end(), greater<int> ());
-        int sum = 0, ans =0;
-        for(auto i: freq){
-            if(sum < n/2){
+        int bucket[100001] = {0};
+        for(int i =1; i < 100001; i++){
+            if(freq[i])
+                bucket[freq[i]] ++;
+        }
+        
+        int ans = 0, half= n /2;
+        for(int i =10000; half > 0; i--){
+            while(bucket[i] && half > 0){
+                half -= i;
+                bucket[i] --;
                 ans ++;
-                sum += i;
-            } 
-            else
-                break;
+            }
         }
         return ans;
     }

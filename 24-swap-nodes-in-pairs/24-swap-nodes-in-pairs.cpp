@@ -16,13 +16,13 @@ public:
         ListNode* prev = dummy;
         prev->next = head;
         
-        while(first && first->next){
-            ListNode* second = first->next; // 1->2
-            ListNode* future = second->next;    // first->next->next
+        while(first && first->next){   // Not Equal to NULL
+            ListNode* second = first->next;
+            ListNode* future = second->next; //first->next->next
             second->next = first;
             prev->next = second;
-            first->next = future;
-            prev = first;
+            first ->next = future;
+            prev =first;
             first = future;
         }
         return dummy->next;

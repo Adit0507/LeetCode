@@ -1,18 +1,16 @@
 class Solution {
 public:
     bool canConstruct(string ransomNote, string magazine) {
-        unordered_map<char, int> m;
+         vector <int> arr(26, 0);
         
-        // Inserting every character  of magazine with its frequency in map
-        for(auto a: magazine){
-            m[a]++;
+        for(int i =0; i < magazine.length(); i++){
+            arr[magazine[i] - 'a']++;
         }
         
-        //Traverse ransomNote, every for its character its frequency in map, must not be 0 or less
-        for(auto a: ransomNote){
-            if(m[a] > 0){
-                m[a]--;
-            }else
+        for(int i = 0; i < ransomNote.length(); i++){
+            if(arr[ransomNote[i] - 'a'] > 0)
+                arr[ransomNote[i] - 'a'] --;
+            else
                 return false;
         }
         return true;

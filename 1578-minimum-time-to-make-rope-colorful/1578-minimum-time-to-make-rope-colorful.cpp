@@ -2,7 +2,7 @@ class Solution {
 public:
     int minCost(string colors, vector<int>& neededTime) {
        // totalTime: Time needed to make rope colorful
-      // currMaxTime: max. time of a balloon needed in the group
+      // currMax: max. time of a balloon needed in the group
         int totalTime = 0, currMax = 0;
 
         //For each balloon in the array

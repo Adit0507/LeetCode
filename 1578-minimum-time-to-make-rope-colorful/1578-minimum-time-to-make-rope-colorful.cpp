@@ -1,24 +1,20 @@
 class Solution {
 public:
     int minCost(string colors, vector<int>& neededTime) {
-        int n = neededTime.size();
-        int ans= 0;
-        // To identify the last color
-        int prev = 0;
+        int totalTime = 0;
+        int i =0, j = 0;
         
-        for(int curr =1; curr < n; curr++){
-            // if curr and prev are same update and delete min oness
-            if(colors[prev] == colors[curr]){
-                if(neededTime[prev] < neededTime[curr]){
-                    ans += neededTime[prev];
-                    prev = curr;        
-                }else{
-                    ans += neededTime[curr];
-                }
-            } else{
-                prev = curr;
+        while(i < neededTime.size() && j < neededTime.size()){
+            int curTotal = 0, curMax = 0;
+            
+            while(j < neededTime.size() && colors[i] == colors[j]){
+                curTotal += neededTime[j];
+                curMax = max(curMax, neededTime[j]);
+                j++;
             }
+            totalTime += curTotal - curMax;
+            i = j;
         }
-        return ans;
+        return totalTime;
     }
 };

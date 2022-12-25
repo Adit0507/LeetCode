@@ -1,56 +1,35 @@
 class Solution {
 public:
-    bool isSafe(int r, int c, vector<string> board, int n){
-        int dupRow= r;
-        int dupCol= c;
-        
-        while(r >=0 && c>= 0){
-            if(board[r][c]== 'Q')
-                return false;
-            r --;
-            c--;
-        }
-        
-        c= dupCol;
-        r = dupRow;
-        while(c >= 0){
-            if(board[r][c] =='Q')
-                return false;
-            c--;
-        }
-        c= dupCol;
-        r = dupRow;
-        while(r <n && c >= 0){
-            if(board[r][c] == 'Q')
-                return false;
-            r++;
-            c--;
-        }
-        return true;
-    }
-    
-    void solve(int c, vector<string> &board, vector<vector<string>> &ans, int n){
+    void solve(int c, vector < string > & board, vector < vector < string >> & ans, vector < int > & leftRow, vector < int > & upperDiagonal, vector < int > & lowerDiagonal, int n){
         if(c== n){
             ans.push_back(board);
             return;
-        }   
-        for(int r =0; r <n; r++){
-            if(isSafe(r, c, board, n)){
-                board[r][c]= 'Q';
-                solve(c +1, board, ans, n);
-                board[r][c]= '.';
+        }
+        
+        for(int r= 0; r <n; r++){
+            if(leftRow[r]== 0&& lowerDiagonal[r +c]== 0&& upperDiagonal[n-1 + c- r]== 0){
+                board[r][c] = 'Q';
+                leftRow[r]= 1;
+                lowerDiagonal[r+c] = 1;
+                upperDiagonal[n -1+c -r]= 1;
+                solve(c + 1, board, ans, leftRow, upperDiagonal, lowerDiagonal, n);
+                board[r][c] = '.';
+                leftRow[r] = 0;
+                lowerDiagonal[r +c] = 0;
+                upperDiagonal[n - 1 +c-r] =0;
             }
         }
     }
-    
     vector<vector<string>> solveNQueens(int n) {
         vector<vector<string>> ans;
         vector<string> board(n);
         string s(n, '.');
         
         for(int i= 0; i < n; i++)
-            board[i]= s;
-        solve(0, board, ans, n);
+            board[i] =s;
+        
+        vector<int> leftRow(n, 0), upperDiagonal(2*n -1, 0), lowerDiagonal(2*n -1, 0);
+        solve(0, board, ans, leftRow, upperDiagonal, lowerDiagonal, n);
         return ans;
     }
 };

@@ -2,19 +2,14 @@ class Solution {
 public:
     vector<int> answerQueries(vector<int>& nums, vector<int>& queries) {
         sort(nums.begin(), nums.end());
-        
         vector<int> ans;
+        
+        for(int i= 1; i < nums.size(); i++)
+            nums[i] += nums[i -1];
+        
         for(auto q: queries){
-            int c=0;
-            for(auto num: nums){
-                if(q >=num){
-                    q -=num;
-                    c ++;
-                }
-                else
-                    break;
-            }
-            ans.push_back(c);
+            int i= upper_bound(nums.begin(), nums.end(), q)- nums.begin();
+            ans.push_back(i);
         }
         return ans;
     }

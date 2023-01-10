@@ -29,7 +29,6 @@ public:
         solve(root->right);
     }
     int averageOfSubtree(TreeNode* root) {
-        ans = 0;
         solve(root);
         return ans;
     }

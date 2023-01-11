@@ -28,24 +28,3 @@ public:
         return dfs(0, 0, hasApple);
     }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
